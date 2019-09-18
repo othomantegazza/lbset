@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>R at the Bar</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/sky.css">
+	<link rel="stylesheet" href="css/custom-sky.css">
+
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>&#x1F355 R at the BAR &#x1F366</h1>
+				<p><small>(cit. Vito Latrofa)</small></p>
+				<p>A quick introduction to R for datascience</p>
+				<p><small>By otho</small></p>
+			</section>
+			<section>
+				<h2>First: download Rstudio</h2>
+				<a href="https://www.rstudio.com/" class="imagelink">
+					<img src="img/RStudio-Logo-white.svg" width="500">
+				</a>
+			</section>
+			<section>
+				<h2>Notes - The RStudio IDE</h2>
+				<p>
+					Open Rstudio:
+					<small>
+						<ul>
+							<li>Even if you explore your data interactively, Always Open use a script! To keep track of
+								what you are doing</li>
+							<li>Send commands to the console with <code>Command + Return</code></li>
+							<li>Check the objects in your environment on the upper right side</li>
+							<li>The fourth panel is just for fun (plots, web viewers)</li>
+						</ul>
+					</small>
+				</p>
+			</section>
+			<section>
+					<h2>Most of the packages you need are in the Tidyverse</h2>
+					<a href="https://www.tidyverse.org/" class="imagelink">
+						<img src="img/tidyverse.svg" alt="hex-rmarkdown" height="300" width="300">
+					</a>
+				</section>
+			<section>
+				<h2>Notes - Get data into R</h2>
+				<p>
+					<ul>
+						<li>Use <a href="https://readr.tidyverse.org/">readr</a> to read rectangular "text" data.</li>
+						<li>Use <a href="https://readxl.tidyverse.org/">readxl</a> to read data from Excel.</li>
+						<li>Use <a
+								href="https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">JSONlite</a>
+						</li>
+					</ul>
+				</p>
+			</section>
+			<section>
+					<h2>Notes - Get data into R</h2>
+					<a href="https://readr.tidyverse.org/" class="imagelink">
+						<img src="img/readr.svg" alt="hex-rmarkdown" height="300" width="300">
+					</a>
+					<a href="https://readxl.tidyverse.org/" class="imagelink">
+						<img src="img/readxl.svg" alt="hex-rmarkdown" height="300" width="300">
+					</a>
+				</section>
+			<section>
+				<h2>Notes - Manipulate Data with DPLYR and PURRR</h2>
+				<a href="https://dplyr.tidyverse.org/" class="imagelink">
+					<img src="img/dplyr.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+				<a href="https://purrr.tidyverse.org/" class="imagelink">
+					<img src="img/purrr.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+			</section>
+			<section>
+				<a href="https://dplyr.tidyverse.org/" class="imagelink">
+					<img src="img/dplyr.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+				<p>
+					DPLYR has a declarative syntax ("inspired" to SQL): You don't tell your script how to manipulate
+					your data, you tell it what you want to achieve!
+				</p>
+			</section>
+			<section>
+					<a href="https://purrr.tidyverse.org/" class="imagelink">
+						<img src="img/purrr.svg" alt="hex-rmarkdown" height="300" width="300">
+					</a>
+					<p>PURRR contains tools for functional programming, you will need it, especially for looping.</p>
+			</section>
+			<section>
+				<h2>Notes: Visualize your data with ggplot2</h2>
+				<a href="https://ggplot2.tidyverse.org/" class="imagelink">
+					<img src="img/ggplot2.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+			</section>
+			<section>
+				<a href="https://ggplot2.tidyverse.org/" class="imagelink">
+					<img src="img/ggplot2.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+				<small>
+					<p>ggplot2 is a high level plot library!</p>
+					<p>
+						It's planned so you can make plots quickly from data with good defaults
+						and minimal customization.
+					</p>
+					<p>Though you can customize them as much as you want.</p>
+				</small>
+			</section>
+			<section>
+				<h2>Head Start on ggplot2</h2>
+				<img src="img/grammar-of-graphics.png" alt="grammar-of-graphics" class="imageFlow">
+				<p><small>
+						credit: @dgkeyes, <a href="https://rfortherestofus.com/">https://rfortherestofus.com/</a>, found
+						through @W_R_Chase
+					</small></p>
+			</section>
+			<section>
+				<h2>Warning, ugly plots ahead!</h2>
+			</section>
+			<section>
+				<h2>What can you do in R...</h2>
+			</section>
+			<section>
+				<h2>Learn</h2>
+				<a href="https://bookdown.org/" class="imagelink">
+					<img src="img/bookdown.svg" alt="hex-rmarkdown" height="300" width="300">
+				</a>
+			</section>
+			<section>
+				<h2>Well, plot...</h2>
+				<small>
+				<ul>
+					<li><a href="https://ggplot2.tidyverse.org/reference/index.html">ggplot2 reference</a></li>
+					<li><a href="https://www.r-graph-gallery.com/index.html">R graph gallery</a></li>
+					<li><a href="https://nsgrantham.shinyapps.io/tidytuesdayrocks/"></a>Tidytuesday collection</li>
+				</ul>
+			</small>
+			</section>
+			<section>
+				<h2>Build apps</h2>
+				<a href="https://shiny.rstudio.com/" class="imagelink">
+					<img src="img/shiny.svg" alt="hex-rmarkdown" height="300" width="300">
+					<p><a href="https://blog.rstudio.com/2019/04/05/first-shiny-contest-winners/">Winners of first shiny contest</a></p>
+			</section>
+			<section>
+				<h2>Model</h2>
+				<a href="https://broom.tidyverse.org/" class="imagelink">
+					<img src="img/broom.svg" alt="hex-rmarkdown" height="300" width="300">
+			</section>
+			<section>
+				<h2>More...</h2>
+				- Web scraping,
+				- Network analysis,
+				- Biology Genetics
+			</section>
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [	]
+		});
+	</script>
+</body>
+
+</html>
