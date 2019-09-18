@@ -15,6 +15,7 @@ park_visit_path <- "data/2-38-park-visits.Rdata"
 
 # Check if data have already been downloaded,
 # If not, read data from github and saves them locally
+# YOU MUST MAKE a new FOLDER NAMED DATA
 if(!file.exists(park_visit_path)) {
   visits <- 
     park_visit_url %>% 
@@ -104,6 +105,7 @@ p_lines2
 
 library(sf)
 library(geojsonsf)
+library(grid)
 
 # read_map_data -----------------------------------------------------------
 
@@ -140,22 +142,58 @@ visits_centroid <-
 
 usa <- map_data("usa")
 
-visits_centroid %>% 
+bg_color <- "#F1F3F4"
+
+p <- 
+  visits_centroid %>%
   filter(y > 25,
          y < 50,
          x < -70,
-         x > -140) %>% 
+         x > -140) %>%
+  # .[keep, ] %>% 
   ggplot(aes(x = x,
              y = y)) + 
   # geom_point() +
   ggvoronoi::geom_voronoi(aes(fill = visitors),
-                          colour = "white",
+                          colour = bg_color,
+                          size = .2,
                           # alpha = .5,
                           outline = usa) + 
-  geom_point(colour = "grey60",
+  geom_point(colour = "white",
              size = .2) +
-  scale_fill_viridis_c(trans = "log") +
+  scale_fill_viridis_c(trans = "log10",
+                       breaks = c(1e4, 1e5, 1e6, 1e7, 1e8),
+                       guide = guide_legend(nrow = 1,
+                                            label.position = "bottom", title.position = "top",
+                                            keywidth = unit(6, units = "mm"),
+                                            keyheight = unit(1.2, units = "mm"))) +
+  lims(x = c(-125, -45)) +
   coord_map() +
-  theme_minimal()
+  theme_void(base_size = 14, base_family = "courier") +
+  theme(legend.position = c(.95, .7),
+        plot.margin = margin(10, 30, 10, 0, unit = "mm"))
+
+svglite::svglite("plots/us-voronoi.svg",
+                 width = 12,
+                 height = 5)
+grid.newpage()
+grid.rect(gp = gpar(fill = bg_color, col = bg_color))
+p %>% print(vp = viewport())
+grid.text(label = "Voronoi grid of US Natural Parks",
+          x = .8, y = .3, 
+          gp = gpar(fontfamily = "courier",
+                    fontface = "bold",
+                    fontsize = 15))
+grid.text(label = "With total visitors from 1900 until now",
+          x = .8, y = .25, 
+          gp = gpar(fontfamily = "courier",
+                    fontsize = 8))
+grid.text(label = "Data from data.world | Plot by @othomn",
+          x = .99, y = .03, 
+          hjust = 1,
+          gp = gpar(fontfamily = "courier",
+                    # fontface = "bold",
+                    fontsize = 8))
+dev.off()
 
 
